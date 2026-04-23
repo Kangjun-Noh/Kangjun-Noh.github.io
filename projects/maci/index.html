@@ -3,35 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MACI | 5-Minute Pitch</title>
-  <meta name="description" content="5-minute pitch video and slides for Multi-LLM Adaptive Conformal Inference for Reliable LLM Responses.">
+  <title>MACI | Slides & Video</title>
+  <meta name="description" content="Slides and video for the MACI paper" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f1115;
-      --panel: #161a22;
-      --panel-2: #0d1016;
+      --bg: #0f0f11;
+      --panel: #151518;
+      --panel-dark: #0b0b0c;
       --text-main: #ffffff;
-      --text-muted: #b3bccb;
+      --text-muted: #a0a0a0;
       --border: rgba(255,255,255,0.10);
-      --border-strong: rgba(255,255,255,0.20);
-      --accent: #dbe8ff;
-      --button: rgba(255,255,255,0.06);
-      --button-hover: rgba(255,255,255,0.12);
-      --shadow: 0 18px 48px rgba(0,0,0,0.35);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #162036 0%, var(--bg) 38%);
+      background: var(--bg);
       color: var(--text-main);
-      overflow: hidden;
     }
-    a { color: inherit; text-decoration: none; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .page {
       display: grid;
@@ -44,69 +50,53 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      padding: 18px 22px;
+      padding: 14px 20px;
       border-bottom: 1px solid var(--border);
-      background: rgba(10, 12, 16, 0.78);
-      backdrop-filter: blur(10px);
+      background: rgba(15,15,17,0.92);
+      backdrop-filter: blur(8px);
     }
 
-    .title-wrap {
-      min-width: 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      letter-spacing: 0.02em;
-      color: var(--accent);
-      margin-bottom: 7px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .title-wrap h1 {
-      font-size: 1.18rem;
+    .topbar-left h1 {
+      font-size: 1rem;
       line-height: 1.35;
       font-weight: 800;
-      max-width: 900px;
     }
 
-    .title-wrap p {
-      font-size: 0.92rem;
+    .topbar-left p {
+      font-size: 0.88rem;
       color: var(--text-muted);
-      margin-top: 5px;
+      margin-top: 4px;
     }
 
-    .actions {
+    .topbar-right {
       display: flex;
+      align-items: center;
       gap: 10px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
-    .action-btn {
+    .pill {
+      font-size: 0.88rem;
+      color: var(--text-muted);
       border: 1px solid var(--border);
-      background: var(--button);
-      color: var(--text-main);
+      padding: 8px 12px;
       border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 0.92rem;
       transition: 0.2s ease;
       white-space: nowrap;
     }
 
-    .action-btn:hover {
-      background: var(--button-hover);
-      border-color: var(--border-strong);
-      transform: translateY(-1px);
+    .pill:hover {
+      color: var(--text-main);
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
     }
 
     .layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 0;
+      height: 100%;
     }
 
     .panel {
@@ -114,8 +104,8 @@
       min-height: 0;
       display: flex;
       flex-direction: column;
+      background: var(--panel);
       border-right: 1px solid var(--border);
-      background: rgba(17, 21, 28, 0.72);
     }
 
     .panel:last-child {
@@ -124,160 +114,65 @@
 
     .panel-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      padding: 13px 16px;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 16px;
       border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
       color: var(--text-muted);
-      font-size: 0.92rem;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .panel-header strong {
-      color: var(--text-main);
-      font-weight: 700;
+      font-size: 0.9rem;
     }
 
     .panel-body {
       flex: 1;
       min-height: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px;
+      background: var(--panel-dark);
       overflow: hidden;
-      background: var(--panel-2);
     }
 
-    .video-wrap {
+    .video-wrap,
+    .pdf-wrap {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      height: 100%;
       background: #000;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .video-wrap iframe,
-    .video-wrap video {
+    .pdf-wrap iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
-      background: #000;
     }
 
-    .slide-viewer {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .slide-canvas-wrap {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: auto;
-      background: #11151c;
-      border-radius: 14px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
-      padding: 10px;
-    }
-
-    canvas {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-    }
-
-    .controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .controls button {
-      border: 1px solid var(--border);
-      background: var(--button);
-      color: var(--text-main);
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 0.92rem;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .controls button:hover:not(:disabled) {
-      background: var(--button-hover);
-      border-color: var(--border-strong);
-    }
-
-    .controls button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    .page-num {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      min-width: 96px;
-      text-align: center;
-    }
-
-    .hint {
-      position: absolute;
-      right: 18px;
-      bottom: 14px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      opacity: 0.88;
-      background: rgba(0,0,0,0.22);
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    }
-
-    @media (max-width: 980px) {
-      body { overflow: auto; }
-      .page { height: auto; min-height: 100vh; }
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width: 900px) {
+      .page {
+        height: auto;
+        min-height: 100vh;
       }
-      .actions {
-        justify-content: flex-start;
-      }
+
       .layout {
         grid-template-columns: 1fr;
+        grid-template-rows: 52vh 70vh;
       }
+
       .panel {
         border-right: none;
         border-bottom: 1px solid var(--border);
       }
+
       .panel:last-child {
         border-bottom: none;
       }
-      .panel-body {
-        min-height: 52vh;
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
       }
-      .hint {
-        position: static;
-        margin: 0 14px 14px auto;
+
+      .topbar-right {
+        justify-content: flex-start;
       }
     }
   </style>
@@ -285,160 +180,50 @@
 <body>
   <div class="page">
     <div class="topbar">
-      <div class="title-wrap">
-        <div class="eyebrow">ICLR 2026 · 5-Minute Pitch</div>
+      <div class="topbar-left">
         <h1>Multi-LLM Adaptive Conformal Inference for Reliable LLM Responses</h1>
-        <p>Watch the talk on the left and browse the slide PDF on the right.</p>
+        <p>5-minute pitch video and slides</p>
       </div>
-      <div class="actions">
-        <a class="action-btn" href="https://github.com/Kangjun-Noh/MACI_video_slides" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-        <a class="action-btn" href="https://youtu.be/NGpkGqoIin0?si=dzbokfB1KNyKvsjm" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
-        <a class="action-btn" href="./slides.pdf" target="_blank" rel="noopener noreferrer">Open Slides PDF</a>
+
+      <div class="topbar-right">
+        <a class="pill" href="https://youtu.be/NGpkGqoIin0?si=dzbokfB1KNyKvsjm" target="_blank" rel="noopener noreferrer">Open YouTube</a>
+        <a class="pill" href="slides.pdf" target="_blank" rel="noopener noreferrer">Open Slides PDF</a>
       </div>
     </div>
 
     <div class="layout">
       <section class="panel">
         <div class="panel-header">
-          <strong>Video</strong>
-          <span>You can keep the video playing while navigating slides</span>
+          <span>Video</span>
+          <span>YouTube embed</span>
         </div>
         <div class="panel-body">
           <div class="video-wrap">
             <iframe
-              src="https://www.youtube-nocookie.com/embed/NGpkGqoIin0?rel=0"
-              title="MACI 5-minute pitch video"
+              src="https://www.youtube.com/embed/NGpkGqoIin0"
+              title="MACI presentation video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen>
             </iframe>
           </div>
         </div>
       </section>
 
-      <section class="panel" style="position:relative;">
+      <section class="panel">
         <div class="panel-header">
-          <strong>Slides</strong>
-          <span>Use ← / → keys or the buttons below</span>
+          <span>Slides</span>
+          <span>PDF viewer</span>
         </div>
         <div class="panel-body">
-          <div class="slide-viewer">
-            <div class="slide-canvas-wrap">
-              <canvas id="pdf-canvas"></canvas>
-            </div>
-            <div class="controls">
-              <button id="prev">← Prev</button>
-              <div id="page-num" class="page-num">Page 1 / 1</div>
-              <button id="next">Next →</button>
-            </div>
+          <div class="pdf-wrap">
+            <iframe
+              src="slides.pdf"
+              title="Slides PDF">
+            </iframe>
           </div>
         </div>
-        <div class="hint">This page expects <code>slides.pdf</code> in the same folder.</div>
       </section>
     </div>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script>
-    const url = './slides.pdf';
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-    let pdfDoc = null;
-    let pageNum = 1;
-    let pageRendering = false;
-    let pageNumPending = null;
-    const defaultScale = 1.5;
-    const canvas = document.getElementById('pdf-canvas');
-    const ctx = canvas.getContext('2d');
-    const pageNumEl = document.getElementById('page-num');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const slideWrap = document.querySelector('.slide-canvas-wrap');
-
-    function updateControls() {
-      if (!pdfDoc) return;
-      pageNumEl.textContent = `Page ${pageNum} / ${pdfDoc.numPages}`;
-      prevBtn.disabled = pageNum <= 1;
-      nextBtn.disabled = pageNum >= pdfDoc.numPages;
-    }
-
-    function renderPage(num) {
-      pageRendering = true;
-      pdfDoc.getPage(num).then(function(page) {
-        const baseViewport = page.getViewport({ scale: defaultScale });
-        const maxWidth = Math.max(slideWrap.clientWidth - 24, 320);
-        const fitScale = Math.min(defaultScale, maxWidth / baseViewport.width);
-        const viewport = page.getViewport({ scale: fitScale });
-
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        const renderTask = page.render({
-          canvasContext: ctx,
-          viewport: viewport
-        });
-
-        renderTask.promise.then(function() {
-          pageRendering = false;
-          if (pageNumPending !== null) {
-            renderPage(pageNumPending);
-            pageNumPending = null;
-          }
-          updateControls();
-        });
-      });
-    }
-
-    function queueRenderPage(num) {
-      if (pageRendering) {
-        pageNumPending = num;
-      } else {
-        renderPage(num);
-      }
-    }
-
-    function onPrevPage() {
-      if (!pdfDoc || pageNum <= 1) return;
-      pageNum -= 1;
-      queueRenderPage(pageNum);
-    }
-
-    function onNextPage() {
-      if (!pdfDoc || pageNum >= pdfDoc.numPages) return;
-      pageNum += 1;
-      queueRenderPage(pageNum);
-    }
-
-    prevBtn.addEventListener('click', onPrevPage);
-    nextBtn.addEventListener('click', onNextPage);
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowLeft') onPrevPage();
-      if (e.key === 'ArrowRight') onNextPage();
-    });
-
-    pdfjsLib.getDocument(url).promise.then(function(loadedPdf) {
-      pdfDoc = loadedPdf;
-      updateControls();
-      renderPage(pageNum);
-    }).catch(function(error) {
-      slideWrap.innerHTML = `
-        <div style="color:#b3bccb; text-align:center; padding:28px; line-height:1.9; max-width:540px;">
-          <div style="font-size:1rem; color:#fff; margin-bottom:10px; font-weight:700;">Could not load <code>slides.pdf</code>.</div>
-          <div>Make sure the slide PDF is uploaded to the same folder as <code>index.html</code>.</div>
-          <div style="margin-top:10px; opacity:0.9;">Expected path: <code>/slides.pdf</code></div>
-        </div>
-      `;
-      prevBtn.disabled = true;
-      nextBtn.disabled = true;
-      pageNumEl.textContent = 'Slides not found';
-      console.error(error);
-    });
-
-    window.addEventListener('resize', function() {
-      if (pdfDoc) queueRenderPage(pageNum);
-    });
-  </script>
 </body>
 </html>
